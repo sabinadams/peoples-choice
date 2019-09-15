@@ -4,12 +4,12 @@ import { withFirebase } from '../../Firebase'
 
 function Home(props) {
 
-	const [ question, setQuestion ] = useState({})
+	// const [ question, setQuestion ] = useState({})
 
 	useEffect( () => {
 
 	})
-	
+
 	return (
         <div> Home Page </div>
 	)

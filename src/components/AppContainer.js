@@ -14,7 +14,7 @@ function AppContainer(props) {
 	// Detect when the user logs in or out
 	useEffect( () => 
 		props.firebase.auth.onAuthStateChanged( user => setUserID( user ? user.uid : 0) )
-	, [])
+	, [props.firebase.auth])
 
 	// Grabs the question ID we are working with
 	useEffect( () => {
@@ -24,7 +24,7 @@ function AppContainer(props) {
 			.onSnapshot( snapshot => snapshot.forEach( doc => setQuestionID( doc.id ) ) )
 
         return function cleanup() { unsubscribe() }
-	}, [])
+	}, [props.firebase])
 	
 	// Grabs answers from the user for this question. 
 	// If it finds one, we should load the home page instead of the question form because they can't answer twice
@@ -37,11 +37,11 @@ function AppContainer(props) {
 
 			return function cleanup() { unsubscribe() }
 		}
-	}, [questionID, userID])
+	}, [questionID, userID, props.firebase])
 
 	// Sets indicator for whether or not the initialization data is ready
 	// We should have a logged in user ID and know if the uesr has answered the question or not before loading the application
-	useEffect( () => setDataReady( userID && hasAnswered !== null) )
+	useEffect( () => setDataReady( userID && hasAnswered !== null), [userID, hasAnswered])
 
 	// Data must be ready, otherwise show a Loading screen
 	// If the user has answered already show the home page
