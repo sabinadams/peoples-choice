@@ -1,7 +1,6 @@
 @import '../../assets/scss/global.scss';
 
 $hollowBoxSize: 3em;
-$hollowLight: #FFA500;
 $hollowDark: $darkBackground;
 $hollowTiming: 1.25s;
 $textColor: #81899a;
@@ -18,7 +17,7 @@ $textColor: #81899a;
 .loadingMessage {
   position: fixed;
   margin-top: $hollowBoxSize;
-  color: $hollowLight;
+  color: $orangeHighlight;
 }
 
 .hollowLoader {
@@ -29,7 +28,7 @@ $textColor: #81899a;
   .largeBox {
     height: $hollowBoxSize;
     width: $hollowBoxSize;
-    background-color: $hollowLight;
+    background-color: $orangeHighlight;
     outline: 1px solid transparent;
     position: fixed;
   }

@@ -1,3 +1,5 @@
+@import '../../assets/scss/global.scss';
+
 #formPage {
     text-align: center;
     display: flex;
@@ -7,4 +9,63 @@
     width: 100vw;
     margin: 0;
     flex-direction: column;
+
+    .question {
+        color: $orangeHighlight;
+    }
+
+    .divider {
+        border-color: #282c3536;
+        width: 50%;
+    }
+    
+    .formContainer {
+        display:flex;
+        flex-direction: column;
+          
+            .formFieldContainer {
+                display: flex;
+                flex-direction: row;
+                .pointSymbols {
+                   flex: 1;
+                   margin-right: 15px;
+                   margin-top: 15px;
+                   text-align: right;
+                }
+                .formField {
+                  margin: 5px 0;
+                  background-color: #2a2e38;
+                  color: #868ea0;
+                  padding: 12px;
+                  width: 250px;
+                  border: none;
+                  font-size: 20px;
+                  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+                  -webkit-appearance: button;
+                  appearance: button;
+                  outline: none;
+      
+                  &:hover {
+                      background-color: #2a2e38b8;
+                  }
+                }
+              
+                .formField option {
+                  padding: 30px;
+                }
+            }
+          
+    }
+
+    .submitButton {
+        margin: 5px 0;
+        background-color: #2a2e38;
+        color: $orangeHighlight;
+        padding: 12px;
+        width: 250px;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        outline: none;
+    }
 }
