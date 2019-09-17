@@ -7,7 +7,7 @@ import Loading from '../screens/Loading/Loading'
 
 function AppContainer(props) {
 	const [ userID, setUserID ] = useState(0);
-	const [ questionID, setQuestionID ] = useState(0)
+	const [ question, setQuestion ] = useState(0)
 	const [ hasAnswered, setHasAnswered ] = useState(null)
 	const [ dataReady, setDataReady ] = useState(false)
 
@@ -20,7 +20,7 @@ function AppContainer(props) {
 	useEffect( () => {
 		let unsubscribe = props.firebase
 			.questions()
-			.onSnapshot( snapshot => snapshot.forEach( doc => setQuestionID( doc.id ) ) )
+			.onSnapshot( snapshot => snapshot.forEach( doc => setQuestion( {...doc.data(), id: doc.id} ) ) )
 
         return function cleanup() { unsubscribe() }
 	}, [props.firebase])
@@ -28,15 +28,15 @@ function AppContainer(props) {
 	// Grabs answers from the user for this question. 
 	// If it finds one, we should load the home page instead of the question form because they can't answer twice
 	useEffect( () => {
-		// Only should run this if both questionID and userID have been loaded from firebase
-		if ( userID && questionID ) {
+		// Only should run this if both question ID and userID have been loaded from firebase
+		if ( userID && question.id ) {
 			let unsubscribe = props.firebase
-				.userAnswer( questionID, userID)
+				.userAnswer( question.id, userID)
 				.onSnapshot( snapshot => setHasAnswered(snapshot.docs.length ? true : false) )
 
 			return function cleanup() { unsubscribe() }
 		}
-	}, [questionID, userID, props.firebase])
+	}, [question, userID, props.firebase])
 
 	// Sets indicator for whether or not the initialization data is ready
 	// We should have a logged in user ID and know if the uesr has answered the question or not before loading the application
@@ -45,7 +45,7 @@ function AppContainer(props) {
 	// Data must be ready, otherwise show a Loading screen
 	// If the user has answered already show the home page
 	// If they haven't answered yet, show the form page
-	return dataReady ? ( hasAnswered ? <Home /> : <Form /> ): <Loading message="Loading Application"/>
+	return dataReady ? ( hasAnswered ? <Home question={question}/> : <Form question={question}/> ): <Loading message="Loading Application"/>
 }
 
 export default withFirebase(AppContainer)
