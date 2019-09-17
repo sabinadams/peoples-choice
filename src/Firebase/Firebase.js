@@ -12,6 +12,8 @@ const config = {
 	appId: "1:462867524584:web:3a6c398ccb3ebf1f5f925d"
 }
 
+// firestore().collection("item").add({...item, created: firebase.firestore.Timestamp.fromDate(new Date()) })
+
 class Firebase {
 	constructor () {
 		firebase.initializeApp(config)
@@ -24,8 +26,9 @@ class Firebase {
 		})
 	}
 
-	questions = () => this.db.collection('questions')
-	answers = questionID => this.db.collection(`answers`).where('questionID', '==', questionID)
+	questions = () => this.db.collection('questions').orderBy('date', 'desc').limit(1)
+	answers = () => this.db.collection('answers')
+	questionAnswers = questionID => this.db.collection(`answers`).where('questionID', '==', questionID)
 	userAnswer = (questionID, userID) => this.db.collection(`answers`).where('questionID', '==', questionID).where('userID', '==', userID)
 }
 

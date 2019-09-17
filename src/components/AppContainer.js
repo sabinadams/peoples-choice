@@ -20,7 +20,6 @@ function AppContainer(props) {
 	useEffect( () => {
 		let unsubscribe = props.firebase
 			.questions()
-			.limit(1)
 			.onSnapshot( snapshot => snapshot.forEach( doc => setQuestionID( doc.id ) ) )
 
         return function cleanup() { unsubscribe() }

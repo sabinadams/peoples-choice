@@ -1,0 +1,33 @@
+@import '../../assets/scss/global.scss';
+
+.formFieldContainer {
+    display: flex;
+    flex-direction: row;
+    .pointSymbols {
+        flex: 1;
+        margin-right: 15px;
+        margin-top: 15px;
+        text-align: right;
+    }
+    .formField {
+        margin: 5px 0;
+        background-color: #2a2e38;
+        color: $lightFontColor;
+        padding: 12px;
+        width: 250px;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        -webkit-appearance: button;
+        appearance: button;
+        outline: none;
+
+        &:hover {
+            background-color: #2a2e38b8;
+        }
+    }
+    
+    .formField option {
+        padding: 30px;
+    }
+}
