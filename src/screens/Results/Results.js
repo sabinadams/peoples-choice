@@ -44,9 +44,8 @@ function Results(props) {
 			<hr className="divider"/>
 			<div className="answersPanel">
 				{ optionCount.map( (option, index) => (
-					<div>
+					<div key={index}>
 						<AnswerRow 
-							key={index}
 							option={props.question.options[option.id]}
 							points={option.points}
 							userAnswer={userAnswers[option.id]}
