@@ -1,0 +1,30 @@
+@import '../../assets/scss/global.scss';
+
+.answerRow {
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+
+    .optionText {
+        flex: 1;
+        text-align: left;
+        margin-right: 20px;
+        color: $lightFontColor;
+    } 
+    .answerCount {
+        display: flex; 
+        flex-direction: row;
+        margin:auto;
+        padding: 5px;
+        border: 2px solid $orangeHighlight;
+        border-radius: 8px;
+        color: $orangeHighlight;
+        .userPoints {
+            margin-left: 5px;
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+        }  
+    }
+
+}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { withFirebase } from '../Firebase'
 
-import Home from '../screens/Home/Home'
+import Results from '../screens/Results/Results'
 import Form from '../screens/Form/Form'
 import Loading from '../screens/Loading/Loading'
 
@@ -26,7 +26,7 @@ function AppContainer(props) {
 	}, [props.firebase])
 	
 	// Grabs answers from the user for this question. 
-	// If it finds one, we should load the home page instead of the question form because they can't answer twice
+	// If it finds one, we should load the results page instead of the question form because they can't answer twice
 	useEffect( () => {
 		// Only should run this if both question ID and userID have been loaded from firebase
 		if ( userID && question.id ) {
@@ -43,9 +43,9 @@ function AppContainer(props) {
 	useEffect( () => setDataReady( userID && hasAnswered !== null), [userID, hasAnswered])
 
 	// Data must be ready, otherwise show a Loading screen
-	// If the user has answered already show the home page
+	// If the user has answered already show the results page
 	// If they haven't answered yet, show the form page
-	return dataReady ? ( hasAnswered ? <Home question={question}/> : <Form question={question}/> ): <Loading message="Loading Application"/>
+	return dataReady ? ( hasAnswered ? <Results question={question}/> : <Form question={question}/> ): <Loading message="Loading Application"/>
 }
 
 export default withFirebase(AppContainer)

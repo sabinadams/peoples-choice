@@ -21,13 +21,9 @@
         -webkit-appearance: button;
         appearance: button;
         outline: none;
-
         &:hover {
             background-color: #2a2e38b8;
         }
     }
     
-    .formField option {
-        padding: 30px;
-    }
 }

@@ -11,9 +11,7 @@ const FormItem = props => (
         
         <select defaultValue={props.chosenAnswer} className="formField" onChange={event => props.onChange(props.answerIndex, event.target.value, props.points)}>
             <option disabled hidden value='no_value'> {props.message} choice </option>
-            { 
-                Object.keys(props.options).map( key => <option key={key} value={key}>{ props.options[key] } </option> ) 
-            }
+            { Object.keys(props.options).map( key => <option key={key} value={key}>{ props.options[key] } </option> ) }
         </select>
     </div>
 )

@@ -55,7 +55,7 @@ function Form(props) {
         userAnswers.map( answer => finalOptions[answer.id] = answer.points )
 
         // Save the entire answer object to the DB. 
-        // Saving this should automatically update the AppContainer's 'hasAnswered' and send us to the home page
+        // Saving this should automatically update the AppContainer's 'hasAnswered' and send us to the results page
         props.firebase.answers().add({
             options: finalOptions,
             questionID: props.question.id,

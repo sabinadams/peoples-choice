@@ -1,0 +1,48 @@
+@import '../../assets/scss/global.scss';
+
+#homePage {
+    padding: 0 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    flex-direction: column;
+    .divider {
+        border-color: $darkBorder;
+        width: 100%;
+    }
+    .answerDivider {
+        opacity: 0.6;
+    }
+    .questionText {
+        color: $orangeHighlight;
+        border: 2px solid $orangeHighlight;
+        border-radius: 8px;
+        padding: 10px;
+    }
+    .fnlPlug {
+        opacity: 0.3;
+        color: $lightFontColor;
+        text-align: left;
+        padding: 0 5em;
+        &:hover {
+            transition: opacity 200ms ease-in-out;
+            opacity: 1;
+        }
+        .fnlLink {
+            text-decoration: none;
+            font-weight: bold;
+            color: $orangeHighlight;
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+    }
+    .answersPanel {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+}
